@@ -135,7 +135,7 @@ There are 16 of these check functions, one for every possible combination of all
 
 At this point we have a maze to solve.
 
-Just as a note, the first function doesn’t actually check anything since there are no reason to exit without having made a single move, the reason it has nevertheless a call to a check function is just to keep the function 220 bytes long.
+Just as a note, the first function doesn’t actually check anything since there is no reason to exit without having made a single move, the reason it has nevertheless a call to a check function is just to keep the function 220 bytes long.
 
 ### Solving the maze
 
