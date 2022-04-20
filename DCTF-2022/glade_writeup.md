@@ -107,7 +107,7 @@ At this point we might speculate that *R* stands for *right, L* for *left, D* fo
 
 However if we try to get to the target function in the most straight forward manner the program exits. That is because of the check functions we mentioned earlier.
 
-Let’s take a look to one of these check functions:
+Let’s take a look at one of these check functions:
 
 ```c
 __int64 __fastcall check_D(__int64 callee_f, __int64 caller_f, int length, int row_len)
