@@ -129,7 +129,7 @@ __int64 __fastcall check_D(__int64 callee_f, __int64 caller_f, int length, int r
 }
 ```
 
-This function exits whenever the previous function isn’t 30 functions backwards. Basically the only way to get to a function that has this check is with a D move.
+This function exits whenever the previous function isn’t 30 functions backward. Basically the only way to get to a function that has this check is with a D move.
 
 There are 16 of these check functions, one for every possible combination of allowed moves.
 
