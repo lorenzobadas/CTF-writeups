@@ -48,11 +48,11 @@ __int64 __fastcall main(int a1, char **a2, char **a3)
 }
 ```
 
-After taking the input `main` calls `sub_113F` that takes the address of `main` , the string we provided and the distance between the function `sub_121B` and `sub_113F`.
+After taking the input, `main` calls `sub_113F`, that takes the address of `main`, the string we provided and the distance between the function `sub_121B` and `sub_113F`.
 
-Actually since `sub_121B` comes right after `sub_113F` that difference is just the length of `sub_113F`, that is 220 bytes.
+Actually, since `sub_121B` comes right after `sub_113F`, that difference is just the length of `sub_113F`, that is 220 bytes.
 
-Before trying to understand what `sub_113F` does, we notice that the file has a lot of similar functions placed one after the other and the last one, `sub_315D3`, calls `system("cat flag.txt")`, so our goal is definitely to get to that function but there are no direct calls to it.
+Before trying to understand what `sub_113F` does, we notice that the file has a lot of similar functions placed one after the other, and the last one, `sub_315D3`, calls `system("cat flag.txt")`, so our goal is definitely to get to that function but there are no direct calls to it.
 
 Let’s see what `sub_113F` does:
 
@@ -88,7 +88,7 @@ __int64 __fastcall sub_113F(__int64 main_addr, char *current_char, __int64 lengt
 
 First of all it calls a function that does a check of some sort, we’ll see that in a moment.
 
-Then depending on the character that `current_char` points to it sets either the variable `v6` or `v7` to $\pm1$.
+Then, depending on the character that `current_char` points to, it sets either the variable `v6` or `v7` to $\pm1$.
 
 These variables control a call to a function that, similarly to the previous call, take the address of the caller, a pointer to our string (incremented by one so that it takes the next character), and the length of the function.
 
@@ -103,9 +103,9 @@ Let’s take a look at the possibilities we have at the return statement to jump
 'U' -> call to sub_113F-(30*length)    // go 30 functions backward
 ```
 
-At this point we might speculate that *R* stands for *right, L* for *left, D* for *down* and *U* for *up*. So if, to move up, we go 30 functions backward that means a row of functions is 30 functions long. Also if we count this kind of functions in the program we notice they are exactly 900, that is $30\times30$. This way we can imagine the functions in a 30-by-30 matrix where in the top left-hand corner we have `sub_113F` and in the bottom right-hand corner we have our target function `sub_315D3`.
+At this point we might speculate that *R* stands for *right*, *L* for *left*, *D* for *down* and *U* for *up*. So if to move up, we go 30 functions backward that means a row of functions is 30 functions long. Also if we count this kind of functions in the program we notice they are exactly 900, that is $30\times30$. This way we can imagine the functions in a 30-by-30 matrix where in the top left-hand corner we have `sub_113F` and in the bottom right-hand corner we have our target function `sub_315D3`.
 
-However if we try to get to the target function in the most straight forward manner the program exits. That is because of the check functions we mentioned earlier.
+However if we try to get to the target function in the most straightforward manner the program exits. That is because of the check functions we mentioned earlier.
 
 Let’s take a look at one of these check functions:
 
@@ -129,7 +129,7 @@ __int64 __fastcall check_D(__int64 callee_f, __int64 caller_f, int length, int r
 }
 ```
 
-This function exits whenever the previous function isn’t 30 functions backward. Basically the only way to get to a function that has this check is with a D move.
+This function exits whenever the previous function isn’t 30 functions backward. Basically the only way to get to a function that has this check is with a *D* move.
 
 There are 16 of these check functions, one for every possible combination of allowed moves.
 
@@ -139,7 +139,7 @@ Just as a note, the first function doesn’t actually check anything since there
 
 ### Solving the maze
 
-First of all we have to associate to each element of the matrix its conditions. From IDA we can get a list of every function that calls a certain check, and from there we build the matrix.
+First of all we have to associate to each element of the matrix its conditions. We can easily get a list of every function that calls a certain check, and from there we build the matrix.
 
 This is the matrix, where each element of it contains the moves allowed to get there.
 
@@ -176,13 +176,13 @@ matrix = ['XXXX','LR  ','LUR ','R   ','LU  ','LUR ','R   ','U   ','U   ','LU  ',
 'DL  ','R   ','D   ','L   ','DR  ','L   ','DR  ','L   ','DLR ','DLR ','LR  ','DLR ','DLR ','DLR ','LR  ','DLR ','DR  ','D   ','L   ','DR  ','L   ','DR  ','L   ','DLR ','DR  ','D   ','DL  ','DLR ','DLR ','R   ']
 ```
 
-We approached this maze with a naïve solution that, starting from `matrix[899]` (our target function) just checks every allowed move until it gets to `matrix[0]`, and then we started optimizing the algorithm from there. Thankfully we managed to get the solution only with 3 checks.
+We approached this maze with a naïve solution that, starting from `matrix[899]` (our target function) just checks every allowed move until it gets to `matrix[0]`, and then we started optimizing the algorithm from there. Thankfully we managed to get the solution only with 3 checks and the code is actually very simple.
 
 - Make sure we are inside the bounds of `matrix`
 - Make sure we have enough moves left to get to `matrix[0]` since we only have 100 moves
 - Make sure we are not stuck in a loop of moves that would lengthen the times unnecessarily
 
-If these check are not satisfied we abort that specific path e go back to the previous move to find another way.
+If these check are not satisfied we abort that specific path and go back to the previous move to find another way.
 
 This is the final script to find a path from `matrix[899]` to `matrix[0]`:
 
@@ -224,6 +224,6 @@ def find_way(matrix, pos, old, moves):
 find_way(matrix, 899, [], [])
 ```
 
-Running this script we get the string `RRDLDLDRDRRRURURDDRDDDLULDLDLDDDDDDDDDRRRDRDRRURRURRURRRUURDDDDDDRRDRURURRRDDRRURRDDDDDRDLDDDR` that is indeed a valid path to get from `matrix[0]` to `matrix[899]`.
+Running this script we get the string `"RRDLDLDRDRRRURURDDRDDDLULDLDLDDDDDDDDDRRRDRDRRURRURRURRRUURDDDDDDRRDRURURRRDDRRURRDDDDDRDLDDDR"` that is indeed a valid path to get from `matrix[0]` to `matrix[899]`.
 
 Sending this string to the server will give us the flag.
