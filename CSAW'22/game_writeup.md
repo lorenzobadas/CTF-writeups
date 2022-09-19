@@ -21,11 +21,11 @@ When we launch it:
 
 > You have encountered a cave system. You need to get to the other side but you don't have enough resources to retrace your steps. Can you make it to the other side?
 
-0
-Which cave would you like to take:
-        The left cave (1)
-        The center cave (2)
-        The right cave (3)
+0  
+Which cave would you like to take:  
+        The left cave (1)  
+        The center cave (2)  
+        The right cave (3)  
 Choice:
 > 
 
