@@ -24,8 +24,8 @@ When we launch it:
 > 0  
 > Which cave would you like to take:  
 >         The left cave (1)  
->         The center cave (2)  
->         The right cave (3)  
+>         The center cave (2)  
+>         The right cave (3)  
 > Choice:
 > 
 
