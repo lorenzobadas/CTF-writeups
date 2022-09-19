@@ -168,7 +168,7 @@ case_id = 1 -> choice = 1 -> Patreon (paywall position)
             -> choice = 3 -> 4       (new case_id)
 ```
 
-I thought it would have been handy to rebuild the entire *map.csv* in local to further debug the program. At the end it actually wasn’t necessary but here it is the equivalent version I rebuilt:
+I thought it would have been handy to rebuild the entire *map.csv* in local to further debug the program. At the end it actually wasn’t necessary but here is the equivalent version I rebuilt:
 
 ```python
 1, 2, 3, 100, 88, 4, 4, 5, 5, 88, 6, 6, 7, 88, 88, 88, 101, 101, 88, 88, 88, 8, 9, 102, 10, 10, 88, 88, 11, 11, 88, 88, 103, 103, 12, 13, 104, 104, 14, 14, 88, 88, 7, 15, 0
