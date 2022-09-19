@@ -1,12 +1,7 @@
 # game
 
-CTF: CSAW'CTF 22
-Category: maze, rev
-Creation Time: September 18, 2022 11:12 PM
-Date: September 18, 2022
-Difficulty: Easy-Medium
-Last Edited: September 19, 2022 10:58 AM
-Solved by: Anonymous
+CTF: CSAW'CTF 22  
+Category: rev  
 
 # Description
 
