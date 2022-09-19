@@ -197,9 +197,3 @@ Paywall_4: "ide@_ever!!}"
 ```
 
 `flag = "flag{e@5+er_e995_6ehind_p@yw@115_i5_+he_dum6e5+_ide@_ever!!}"`
-
-# Links and tools
-
----
-
-[IDA Pro](https://www.notion.so/IDA-Pro-6a904e120cc44b9abce2d8335b65da92)
