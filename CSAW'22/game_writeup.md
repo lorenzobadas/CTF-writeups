@@ -80,13 +80,13 @@ After the update there are 4 possibilities:
 
 ## Paywall
 
-When we hit a paywall position the program calculates an hash using the algorithm *fnv1a32* with 4 different words depending on the value of `case_id`.
+When we hit a paywall position the program calculates a hash using the algorithm *fnv1a32* with 4 different words depending on the value of `case_id`.
 
 This hash is the password required to continue.
 
 Recalling that we don’t have the map since it is a remote service, we shouldn’t be able to know the value of `case_id` when we end up in a paywall position.
 
-The program basically tells us the position if we get the password wrong printing a string with an hint:
+The program basically tells us the position if we get the password wrong printing a string with a hint:
 
 ```c
 __printf_chk(1LL, "You have entered the wrong password! You can obtain the right password by paying us USD$%.2f to our Patreon page\n", v9);
