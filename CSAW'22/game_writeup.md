@@ -51,7 +51,7 @@ This function opens two files, *flag.txt* and *map.csv.*
 
 ## `level_gen()` function
 
-This function lets us choose in which direction to go, then calls `level_next()` where the main logic is implemented.
+This function prints `case_id` and then lets us choose in which direction to go, then calls `level_next()` where the main logic is implemented.
 
 ## `level_next()` function
 
