@@ -80,7 +80,7 @@ After the update there are 4 possibilities:
 
 ## Paywall
 
-When we hit a paywall position the program calculates a hash using the algorithm *fnv1a32* with 4 different words depending on the value of `case_id`.
+When we hit a paywall position the program calculates a hash using the algorithm *fnv1a32* with 5 different words depending on the value of `case_id`.
 
 This hash is the password required to continue.
 
