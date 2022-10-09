@@ -92,7 +92,7 @@ The program basically tells us the position if we get the password wrong printin
 __printf_chk(1LL, "You have entered the wrong password! You can obtain the right password by paying us USD$%.2f to our Patreon page\n", v9);
 ```
 
-Where `v9` is $10^{case\_id - 100}\times 0.01$, this way we have an equation to know the `case_id` of a certain paywall position.
+Where `v9` is $10^{caseid - 100}\times 0.01$, this way we have an equation to know the `case_id` of a certain paywall position.
 
 In short:
 
